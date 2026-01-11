@@ -1,6 +1,6 @@
 import Header from "../component/Header";
 import InfoSection from "../component/InfoSection";
-
+import NewsSection from "../component/NewsSection";
 
 
 export default function Home() {
@@ -8,7 +8,7 @@ export default function Home() {
     <>
       <Header />
       <InfoSection />
-      
+      <NewsSection />
       
     </>
   );
