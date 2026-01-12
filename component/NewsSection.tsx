@@ -6,12 +6,12 @@ import type { NewsCard, LayoutType } from "../types/newsSectionTypes";
 function getTabClasses(layout?: LayoutType): string {
 	const widthClass = layout?.width ? `w-[${layout.width}px]` : "";
 	const heightClass = layout?.height ? `h-[${layout.height}px` : "";
-	const fontSizeClass = layout?.fontSize ? `text-[${layout.fontSize}px]` : "text-sm";
+	const fontSizeClass = layout?.fontSize ? `text-[${layout.fontSize / 16}rem]` : "text-sm";
 	return `bg-blue-100 text-slate-800 font-semibold flex items-center justify-center rounded ${widthClass} ${heightClass} ${fontSizeClass}`;
 }
 
 function getAuthorNameClasses(layout?: LayoutType): string {
-	const fontSizeClass = layout?.fontSize ? `text-[${layout.fontSize}px]` : "text-xs";
+	const fontSizeClass = layout?.fontSize ? `text-[${layout.fontSize / 16}rem]` : "text-xs";
 	const fontWeightClass = layout?.fontWeight === 600 ? "font-semibold" : "";
 	const colorClass = layout?.color ? "" : "text-slate-800";
 	return `${fontSizeClass} ${fontWeightClass} ${colorClass}`;
@@ -23,7 +23,7 @@ function getTitleClasses(layout?: LayoutType): string {
 		if (layout.fontFamily.includes("Georgia")) fontFamilyClass = "font-serif";
 		else if (layout.fontFamily.includes("Helvetica")) fontFamilyClass = "font-helvetica";
 	}
-	const fontSizeClass = layout?.fontSize ? `text-[${layout.fontSize}px]` : "text-xl";
+	const fontSizeClass = layout?.fontSize ? `text-[${layout.fontSize / 16}rem]` : "text-xl";
 	const fontWeightClass =
 		layout?.fontWeight === 700 ? "font-bold" :
 		layout?.fontWeight === 600 ? "font-semibold" :
@@ -44,7 +44,7 @@ function getTitleClasses(layout?: LayoutType): string {
 }
 
 function getDescriptionClasses(layout?: LayoutType): string {
-	const fontSizeClass = layout?.fontSize ? `text-[${layout.fontSize}px]` : "text-sm";
+	const fontSizeClass = layout?.fontSize ? `text-[${layout.fontSize / 16}rem]` : "text-sm";
 	const fontWeightClass = layout?.fontWeight === 400 ? "font-normal" : "";
 	const lineHeightClass = layout?.lineHeight === "140%" ? "leading-relaxed" : "";
 	const colorClass = layout?.color ? "" : "text-gray-700";
