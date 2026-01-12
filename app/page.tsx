@@ -1,7 +1,7 @@
 import Header from "../component/Header";
 import InfoSection from "../component/InfoSection";
 import NewsSection from "../component/NewsSection";
-
+import FranchisePowerRankings from "../component/FranchisePowerRankings";
 
 export default function Home() {
   return (
@@ -9,7 +9,7 @@ export default function Home() {
       <Header />
       <InfoSection />
       <NewsSection />
-      
+      <FranchisePowerRankings />
     </>
   );
 }

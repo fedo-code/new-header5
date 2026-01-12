@@ -5,10 +5,8 @@ const config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   safelist: [
-     'text-[1.5625rem]', // 25px
-    
+    'text-[1.5625rem]', // 25px
     'text-[0.875rem]',  // 14px
-   ,
     'text-[1rem]',      // 16px
     'w-[115px]',
     'h-[14px]',
