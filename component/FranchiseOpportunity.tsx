@@ -245,3 +245,5 @@ export default function FranchiseOpportunity() {
 		</>
 	);
 }
+
+// No inline styles are used in this file. All styling is handled via Tailwind CSS classes.
