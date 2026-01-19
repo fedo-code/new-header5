@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { navLinks, headerImages, headerButtons } from "../data/headerData";
+import { buyingDropdownItems } from "../data/buyingDropdownData";
 
 export default function Header() {
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -100,8 +101,8 @@ export default function Header() {
 							aria-label="Close menu"
 						>
 							<svg width={22} height={22} viewBox="0 0 22 22" fill="none">
-								<circle cx="11" cy="11" r="10" stroke="currentColor" strokeWidth={2} fill="none"/>
-								<path d="M16 6L6 16M6 6l10 10" stroke="currentColor" strokeWidth={2} strokeLinecap="round"/>
+								<circle cx="11" cy="11" r="10" stroke="currentColor" strokeWidth={2} fill="none" />
+								<path d="M16 6L6 16M6 6l10 10" stroke="currentColor" strokeWidth={2} strokeLinecap="round" />
 							</svg>
 						</button>
 						<div className="flex flex-col gap-2 mt-6">
@@ -109,7 +110,7 @@ export default function Header() {
 								<div key={label}>
 									<button
 										className="w-full flex items-center justify-between text-xs font-semibold py-2 px-1 hover:bg-gray-50 rounded"
-										onClick={label === "Buy A Franchise" ? () => setBuyingOpen(v => !v) : undefined}
+										onClick={label === "Buy A Franchise" ? () => setBuyingOpen((v) => !v) : undefined}
 										disabled={label !== "Buy A Franchise"}
 									>
 										<span>{label}</span>
@@ -121,7 +122,7 @@ export default function Header() {
 											stroke="currentColor"
 											strokeWidth={2}
 											viewBox="0 0 24 24"
-										>
+									>
 											<path
 												strokeLinecap="round"
 												strokeLinejoin="round"
@@ -129,6 +130,32 @@ export default function Header() {
 											/>
 										</svg>
 									</button>
+									{/* Dropdown for Buying A Franchise */}
+									{label === "Buy A Franchise" && buyingOpen && (
+										<div className="mt-1 mb-2 ml-2 flex flex-col gap-1">
+											{buyingDropdownItems.map((item) => (
+												<div key={item.label} className="flex items-center py-2 px-2 rounded hover:bg-gray-100">
+													<span className="mr-2 flex items-center justify-center bg-[#B3C7E6] rounded w-[18px] h-[18px]" style={{ minWidth: 18, minHeight: 18 }}>
+														<img
+															src={item.icon}
+															alt="Logo"
+															width={7}
+															height={7}
+															className="object-contain"
+															style={{ width: 7, height: 7 }}
+														/>
+													</span>
+													{item.label === "Find a Franchise Opportunity" ? (
+														<Link href="/franchise-opportunity" className="text-xs text-blue-600 hover:underline">
+															{item.label}
+														</Link>
+													) : (
+														<span className="text-xs">{item.label}</span>
+													)}
+												</div>
+											))}
+										</div>
+									)}
 								</div>
 							))}
 							<hr className="my-2" />

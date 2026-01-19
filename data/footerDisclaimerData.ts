@@ -1,0 +1,4 @@
+export const footerDisclaimer = `This information is not intended as an offer to sell, or the solicitation of an offer to buy, a franchise. It is for information purposes only. Currently, the following states regulate the offer and sale of franchises: California, Hawaii, Illinois, Indiana, Maryland, Michigan, Minnesota, New York, North Dakota, Oregon, Rhode Island, South Dakota, Virginia, Washington, and Wisconsin. If you are a resident of one of these states, we will not offer you a franchise unless and until we have complied with applicable pre-sale registration and disclosure requirements in your jurisdiction. Franchise offerings are made by Franchise Disclosure Document only.`;
+
+// Type file ki zarurat nahi hai, kyunki ye sirf ek simple string export hai.
+// Agar aap multi-language ya complex structure use karte, tab type useful hota.

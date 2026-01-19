@@ -9,3 +9,8 @@ export interface HeaderButton {
 	href: string;
 	className: string;
 }
+
+export type BuyingDropdownItem = {
+	label: string;
+	icon: string; // icon path, now required and dynamic
+};
