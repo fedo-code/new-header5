@@ -88,7 +88,3 @@ export default function Footer() {
 	);
 }
 
-// Is file me koi inline style nahi hai.
-// Sare CSS classes (e.g. bg-[#181924], text-white, flex, gap-8, min-w-[180px], etc.) Tailwind CSS documentation ke standard utility classes hain.
-// Pure Tailwind CSS ka use ho raha hai, koi custom CSS ya inline style nahi hai.
-

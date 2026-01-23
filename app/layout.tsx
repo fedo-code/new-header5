@@ -1,15 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Roboto_Condensed } from "next/font/google";
 import "./globals.css";
+import Header from "../component/Header";
+import Footer from "../component/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-inter",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const robotoCondensed = Roboto_Condensed({
   subsets: ["latin"],
+  weight: ["300", "400", "700", "900"],
+  variable: "--font-roboto-condensed",
 });
 
 export const metadata: Metadata = {
@@ -19,15 +23,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en" className={`${inter.variable} ${robotoCondensed.variable}`}>
+      <body className="antialiased font-inter">
+        <Header />
         {children}
+        <div className="mt-10" />
+        <Footer />
       </body>
     </html>
   );

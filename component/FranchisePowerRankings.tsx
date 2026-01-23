@@ -8,30 +8,37 @@ import {
 	hottestFranchisesSection,
 	growthClubSection,
 	sidebarIcons,
+	FRANCHISE_GRID_COLS, // import the grid class
 } from "../data/franchisePowerRankingsData";
 import type { ContentCard } from "../types/franchisePowerRankingsTypes";
 
 export default function FranchisePowerRankings() {
 	return (
 		<section className="container mx-auto px-4 md:px-8 lg:px-12 py-8">
-			<div className="grid grid-cols-1 lg:grid-cols-[3fr_1fr] gap-8 h-full">
+			<div className={FRANCHISE_GRID_COLS}>
 				{/* Left section (80%) */}
 				<div>
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
 						{contentCards.map((card: ContentCard, idx: number) => (
 							<div
 								key={idx}
-								className="bg-white rounded-2xl shadow p-5 flex flex-col items-center mx-auto w-full sm:w-full md:w-auto"
+								className="bg-white rounded-2xl flex flex-col items-center mx-auto w-full sm:w-full md:w-auto"
 							>
-								<div className="w-full flex flex-col items-start">
+								<div
+									className="flex flex-col items-start"
+									style={{ width: card.contentWidth }}
+								>
 									<span className="text-xs font-bold text-pink-600 mb-2 tracking-wide w-fit">
 										{card.label}
 									</span>
-									<img
-										src={card.img}
-										alt={card.label}
-										className="h-32 w-auto object-cover rounded-xl mb-4"
-									/>
+									<div className="w-full aspect-[16/9] mb-4">
+										<img
+											src={card.img}
+											alt={card.label}
+											className="object-cover rounded-xl w-full h-full"
+											loading="lazy"
+										/>
+									</div>
 									<h3 className="text-base font-bold text-gray-900 mb-2.5 text-left w-full">
 										{card.title}
 									</h3>

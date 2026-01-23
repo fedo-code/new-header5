@@ -71,7 +71,7 @@ export default function NewsSection() {
 				{newsCards.map((card, idx) => (
 					<div
 						key={idx}
-						className="bg-white rounded shadow flex flex-col h-full"
+						className="bg-white rounded flex flex-col h-full" // removed 'shadow'
 					>
 						<div className="mb-3">
 							<Image

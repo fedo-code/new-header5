@@ -7,66 +7,118 @@ import {
 	SidebarButton,
 } from "../types/franchisePowerRankingsTypes";
 
+export const CARD_IMG_WIDTH = 256;
+export const CARD_IMG_HEIGHT = 144;
+export const CARD_CONTENT_WIDTH = 256; // added for text width
+
 export const contentCards: ContentCard[] = [
 	{
 		label: "FRESHCOAT PAINTERS",
 		title: "What Every Franchisee Should Know About Expanding Into the Commercial Industry With Fresh Coat Painters",
 		img: "/placeholder/painters.png",
+		imgWidth: CARD_IMG_WIDTH,
+		imgHeight: CARD_IMG_HEIGHT,
+		contentWidth: CARD_CONTENT_WIDTH,
+		aspectRatio: "aspect-[16/9]",
 	},
 	{
 		label: "BUY",
 		title: "The Best Types of Franchises To Buy in College Towns",
 		img: "/placeholder/buy.png",
+		imgWidth: CARD_IMG_WIDTH,
+		imgHeight: CARD_IMG_HEIGHT,
+		contentWidth: CARD_CONTENT_WIDTH,
+		aspectRatio: "aspect-[16/9]",
 	},
 	{
 		label: "GROW",
 		title: "The Ultimate Guide To Franchising Your Business – Phase 1: Laying the Foundation – How to Create an Operations Manual",
 		img: "/placeholder/grow.png",
+		imgWidth: CARD_IMG_WIDTH,
+		imgHeight: CARD_IMG_HEIGHT,
+		contentWidth: CARD_CONTENT_WIDTH,
+		aspectRatio: "aspect-[16/9]",
 	},
 	{
 		label: "BUY",
 		title: "The Top 15 Mobile and In-Home Pet Care Franchises for 2025",
 		img: "/placeholder/buy1.png",
+		imgWidth: CARD_IMG_WIDTH,
+		imgHeight: CARD_IMG_HEIGHT,
+		contentWidth: CARD_CONTENT_WIDTH,
+		aspectRatio: "aspect-[16/9]",
 	},
 	{
 		label: "LAYNE'S CHICKEN FINGERS",
 		title: "Doing Your Homework: How to Perform Due Diligence Before Becoming a Layne’s Franchisee",
 		img: "/placeholder/layners.png",
+		imgWidth: CARD_IMG_WIDTH,
+		imgHeight: CARD_IMG_HEIGHT,
+		contentWidth: CARD_CONTENT_WIDTH,
+		aspectRatio: "aspect-[16/9]",
 	},
 	{
 		label: "FRANCHISEE FEATURE",
 		title: "How This Franchisee of 35 Years Is Building a Family Legacy Through Papa Murphy’s",
 		img: "/placeholder/feature.png",
+		imgWidth: CARD_IMG_WIDTH,
+		imgHeight: CARD_IMG_HEIGHT,
+		contentWidth: CARD_CONTENT_WIDTH,
+		aspectRatio: "aspect-[16/9]",
 	},
 	{
 		label: "PARIS BAGUETTE",
 		title: "Paris Baguette Expands With Over 225 New Cafés Awarded, Almost 60 New Openings at Q3 Close",
 		img: "/placeholder/paris.png",
+		imgWidth: CARD_IMG_WIDTH,
+		imgHeight: CARD_IMG_HEIGHT,
+		contentWidth: CARD_CONTENT_WIDTH,
+		aspectRatio: "aspect-[16/9]",
 	},
 	{
 		label: "BUY",
 		title: "How To Buy a Franchise With No Money Down: Is It Possible?",
 		img: "/placeholder/buy3.png",
+		imgWidth: CARD_IMG_WIDTH,
+		imgHeight: CARD_IMG_HEIGHT,
+		contentWidth: CARD_CONTENT_WIDTH,
+		aspectRatio: "aspect-[16/9]",
 	},
 	{
 		label: "GROW",
 		title: "The Ultimate Guide To Franchising Your Business: How To Build a Scalable, Sustainable Franchise Brand",
 		img: "/placeholder/grow (2).png",
+		imgWidth: CARD_IMG_WIDTH,
+		imgHeight: CARD_IMG_HEIGHT,
+		contentWidth: CARD_CONTENT_WIDTH,
+		aspectRatio: "aspect-[16/9]",
 	},
 	{
 		label: "BUY",
 		title: "Franchise Agreement Red Flags First-Time Buyers Should Watch For",
 		img: "/placeholder/buy4.png",
+		imgWidth: CARD_IMG_WIDTH,
+		imgHeight: CARD_IMG_HEIGHT,
+		contentWidth: CARD_CONTENT_WIDTH,
+		aspectRatio: "aspect-[16/9]",
 	},
 	{
 		label: "GROW",
 		title: "The Emerging Franchisor’s Playbook: What Founders Can Learn From The Garage Floor Company’s Growth Journey",
 		img: "/placeholder/grow3.png",
+		imgWidth: CARD_IMG_WIDTH,
+		imgHeight: CARD_IMG_HEIGHT,
+		contentWidth: CARD_CONTENT_WIDTH,
+		aspectRatio: "aspect-[16/9]",
 	},
 	{
 		label: "FRANCHISEE FEATURE",
 		title: "Former Finance Executive Finds Fulfillment in Caring for Others Through Right at Home",
 		img: "/placeholder/feature2.png",
+		imgWidth: CARD_IMG_WIDTH,
+		imgHeight: CARD_IMG_HEIGHT,
+		contentWidth: CARD_CONTENT_WIDTH,
+		aspectRatio: "aspect-[16/9]",
 	},
 ];
 
@@ -136,3 +188,6 @@ export const sidebarIcons: SidebarIcons = {
 	getProfileBtnClass: "rounded-full bg-transparent px-0 py-0 flex items-center cursor-pointer border border-cyan-400",
 	getProfileImgClass: "h-8 w-auto",
 };
+
+export const FRANCHISE_GRID_COLS =
+  "grid grid-cols-1 2xl:grid-cols-[3fr_1fr] gap-8 h-full";

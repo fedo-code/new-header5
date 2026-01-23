@@ -1,6 +1,9 @@
 "use client";
+import robotoCondensed from "../app/layout";
 import React from "react";
 import type { JSX } from "react";
+
+
 import {
 	heroButtons,
 	heroSections,
@@ -21,13 +24,15 @@ export default function LandingHero(): JSX.Element {
 			<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10 items-start">
 				{/* Left col */}
 				<div className="flex flex-col justify-start">
-					<h1 className="text-[35px] font-bold mb-2">
+					<h1 className="font-roboto-condensed text-[35px] font-bold mb-2 text-[#0F3460]">
+
 						{heroSections[0]?.leftTitle ?? ""}
 					</h1>
 				</div>
-				{/* Right col */}
+				{/* Right col */} 
 				<div className="flex flex-col justify-start">
-					<p className="text-[18px] text-gray-700 mb-4 font-georgia">
+					<p className="font-georgia text-[18px] text-gray-700 mb-4"
+                     >
 						{heroSections[0]?.leftDescription ?? ""}
 					</p>
 					<button className="px-5 py-2 rounded bg-gray-900 text-white font-semibold text-sm w-fit">
@@ -41,9 +46,10 @@ export default function LandingHero(): JSX.Element {
 				{heroButtons.map((btn: HeroButton) => (
 					<button
 						key={btn.label}
-						className={`px-4 py-2 rounded bg-gray-100 hover:bg-gray-200 font-semibold text-sm ${buttonWidths[btn.label] ?? ""}`}
+						className={`px-4 py-2 rounded bg-gray-100 hover:bg-gray-200 font-semibold text-sm flex items-center whitespace-nowrap text-[#0F3460] ${buttonWidths[btn.label] ?? ""}`}
 					>
-						{btn.label}
+						<span>{btn.label}</span>
+						<span className="ml-2 text-base">&#8594;</span>
 					</button>
 				))}
 			</div>

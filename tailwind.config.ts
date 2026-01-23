@@ -1,13 +1,13 @@
 const config = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    
     "./component/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   safelist: [
-    'text-[1.5625rem]', // 25px
-    'text-[0.875rem]',  // 14px
-    'text-[1rem]',      // 16px
+    'text-[1.5625rem]',
+    'text-[0.875rem]',
+    'text-[1rem]',
     'w-[115px]',
     'h-[14px]',
     'leading-[117%]',
@@ -21,18 +21,27 @@ const config = {
     'min-h-[11px]',
     'max-w-[10px]',
     'max-h-[11px]',
+    
   ],
   theme: {
     extend: {
+      fontFamily: {
+        
+        georgia: ['Georgia', 'serif'],
+
+         inter: ["var(--font-inter)", "system-ui", "sans-serif"],
+         "roboto-condensed": ["var(--font-roboto-condensed)", "sans-serif"],
+      },
+
+      
       screens: {
         'btn-sm': { min: '1024px', max: '1065px' },
       },
-      fontFamily: {
-        helvetica: ['"Helvetica Neue"', 'Arial', 'sans-serif'],
-      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+  ],
 };
 
 export default config;

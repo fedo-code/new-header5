@@ -2,6 +2,10 @@ export type ContentCard = {
 	label: string;
 	title: string;
 	img: string;
+	imgWidth?: number; // added
+	imgHeight?: number; // added
+	contentWidth?: number; // added for controlling text width
+	aspectRatio?: string; // added for Tailwind aspect ratio
 };
 
 export type SidebarHeader = {
