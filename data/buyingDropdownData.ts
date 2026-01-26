@@ -4,6 +4,7 @@ export const buyingDropdownItems: BuyingDropdownItem[] = [
 	{
 		label: "Find a Franchise Opportunity",
 		icon: "/logos/lucide_inspect.png",
+		route: "/franchise-opportunity",
 	},
 	{
 		label: "Franchise Deep Dives",

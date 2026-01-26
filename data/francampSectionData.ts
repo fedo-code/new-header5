@@ -4,8 +4,6 @@ export const francampSectionData: FrancampSectionData = {
 	leftLogo: {
 		src: "/francamp/francamp.png",
 		alt: "Francamp Logo",
-		width: 84,
-		height: 106,
 	},
 	heading: "FranCamp: Where Franchise Brands Go to Grow",
 	description:

@@ -7,14 +7,73 @@ import { navLinks, headerImages, headerButtons } from "../data/headerData";
 import { buyingDropdownItems } from "../data/buyingDropdownData";
 import { dropdownLinks, dropdownRightImage, dropdownEllipseImage } from "../data/header1851DropdownData";
 
+// Update your buyingDropdownItems data to include a `route` property for the navigable item(s).
+// Example (in buyingDropdownData.ts):
+// { label: "Find a Franchise Opportunity", icon: "...", route: "/franchise-opportunity" }
+
+function BuyAFranchiseLinks({
+	items,
+	onFirstClick,
+	spanClass = "text-[15px] text-[#222] font-georgia",
+	iconBgClass = "bg-blue-100",
+	iconSize = 14,
+}: {
+	items: { label: string; icon: string; route?: string }[];
+	onFirstClick?: (e: React.MouseEvent<HTMLButtonElement>, route?: string) => void;
+	spanClass?: string;
+	iconBgClass?: string;
+	iconSize?: number;
+}) {
+	return (
+		<>
+			{items.map((item) => (
+				<div
+					key={item.label}
+					className="flex items-center py-2 px-2 rounded hover:bg-gray-100 transition"
+					style={{ cursor: item.route && onFirstClick ? "pointer" : undefined }}
+					onClick={!item.route || !onFirstClick ? undefined : undefined}
+				>
+					<span
+						className={`mr-2 flex items-center justify-center ${iconBgClass} rounded`}
+						style={{ width: 18, height: 18, minWidth: 18, minHeight: 18 }}
+					>
+						<img
+							src={item.icon}
+							alt="Logo"
+							width={iconSize}
+							height={iconSize}
+							className="object-contain"
+							style={{ width: iconSize, height: iconSize }}
+						/>
+					</span>
+					{item.route && onFirstClick ? (
+						<button
+							type="button"
+							className={`${spanClass} bg-transparent border-none p-0 m-0 hover:underline cursor-pointer`}
+							onClick={e => onFirstClick(e, item.route)}
+						>
+							{item.label}
+						</button>
+					) : (
+						<span className={spanClass}>{item.label}</span>
+					)}
+				</div>
+			))}
+		</>
+	);
+}
+
 export default function Header({ onShowEventSection }: { onShowEventSection?: () => void }) {
 	const [menuOpen, setMenuOpen] = useState(false);
-	const [buyingOpen, setBuyingOpen] = useState(false);
-	const [servicesOpen, setServicesOpen] = useState(false); // for 1851 Services dropdown
+	const [buyingOpen, setBuyingOpen] = useState(false); // desktop modal only
+	const [mobileBuyingOpen, setMobileBuyingOpen] = useState(false); // <-- new for mobile dropdown
+	const [servicesOpen, setServicesOpen] = useState(false);
 	const servicesRef = useRef<HTMLDivElement>(null);
-	const [mobileServicesOpen, setMobileServicesOpen] = useState(false); // for mobile 1851 Services
+	const buyingRef = useRef<HTMLDivElement>(null);
+	const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+	const router = useRouter();
 
-	// Close dropdown when clicking outside
+	// Close 1851 Services modal on outside click
 	useEffect(() => {
 		if (!servicesOpen) return;
 		function handleClick(e: MouseEvent) {
@@ -29,16 +88,104 @@ export default function Header({ onShowEventSection }: { onShowEventSection?: ()
 		return () => document.removeEventListener("mousedown", handleClick);
 	}, [servicesOpen]);
 
+	// Close Buy A Franchise modal on outside click
+	useEffect(() => {
+		if (!buyingOpen) return;
+		function handleClick(e: MouseEvent) {
+			if (
+				buyingRef.current &&
+				!buyingRef.current.contains(e.target as Node)
+			) {
+				setBuyingOpen(false);
+			}
+		}
+		document.addEventListener("mousedown", handleClick);
+		return () => document.removeEventListener("mousedown", handleClick);
+	}, [buyingOpen]);
+
 	return (
 		<header className="w-full border-b border-gray-200 bg-white">
 			<div className="max-w-screen-2xl mx-auto flex items-center justify-between px-4 py-2 min-w-[120px]">
 				<div className="flex items-center shrink-0 min-w-[120px]">
-					<Image {...headerImages.logo} priority />
-					<Image {...headerImages.franchise} />
+					<Link href="/" className="flex items-center">
+						<Image {...headerImages.logo} priority />
+						<Image {...headerImages.franchise} />
+					</Link>
 				</div>
 				<nav className="hidden lg:flex flex-1 items-center ml-8">
 					{navLinks.map(({ label, href, hasDropdown }) =>
-						label === "1851 Services" ? (
+						label === "Buy A Franchise" ? (
+							<div
+								key={label}
+								className="relative group"
+								ref={buyingRef}
+							>
+								<button
+									type="button"
+									onClick={() => setBuyingOpen((v) => !v)}
+									className="px-3 py-2 flex items-center text-gray-700 hover:text-slate-800 text-xs focus:outline-none"
+								>
+									{label}
+									<svg
+										className="ml-1 w-4 h-4"
+										fill="none"
+										stroke="currentColor"
+										strokeWidth={2}
+										viewBox="0 0 24 24"
+									>
+										<path
+											strokeLinecap="round"
+											strokeLinejoin="round"
+											d="M19 9l-7 7-7-7"
+										/>
+									</svg>
+								</button>
+								{/* Buy A Franchise Dropdown Modal (desktop only) */}
+								{buyingOpen && (
+									<div className="absolute left-0 top-full mt-2 w-[560px] h-[210px] bg-white rounded-lg shadow-xl flex z-50 overflow-hidden">
+										{/* LEFT: Links */}
+										<div className="flex-1 p-6 flex flex-col justify-start">
+											<h3 className="font-bold text-[20px] text-[#222] mb-4">Buy A Franchise</h3>
+											<div className="flex flex-col gap-2">
+												<BuyAFranchiseLinks
+													items={buyingDropdownItems}
+													onFirstClick={(_, route) => {
+														setBuyingOpen(false);
+														if (route) router.push(route);
+													}}
+													spanClass="text-[15px] text-[#222] font-georgia whitespace-nowrap"
+													iconBgClass="bg-blue-100"
+													iconSize={14}
+												/>
+											</div>
+										</div>
+										{/* RIGHT: Image + magenta text */}
+										<div
+											className="flex flex-col items-center justify-start bg-[#F7F8FA] p-4 border-l border-gray-100 relative w-[280px] mt-[10px]"
+										>
+											<span
+												className="text-[13px] font-bold text-fuchsia-600 text-center whitespace-nowrap leading-tight mb-2"
+											>
+												SEE THIS MONTHS COVER &gt;
+											</span>
+											<div className="flex-1 flex items-center justify-center w-full">
+												<img
+													src="/franchiseplaceholder/petfranchise.png"
+													alt="Cover"
+													className="relative z-10 w-[120px] h-[160px] object-contain rounded shadow"
+												/>
+											</div>
+											<img
+												src="/1851dropdown/Ellipse 301.png"
+												alt="Ellipse"
+												className="absolute left-1/2 bottom-0 -translate-x-1/2 w-[182px]"
+											/>
+											<div className="h-0"></div>
+										</div>
+									</div>
+								)}
+							</div>
+						) : label === "1851 Services" ? (
 							<div
 								key={label}
 								className="relative group"
@@ -230,11 +377,11 @@ export default function Header({ onShowEventSection }: { onShowEventSection?: ()
 										<>
 											<button
 												className="w-full flex items-center justify-between text-xs font-semibold py-2 px-1 hover:bg-gray-50 rounded"
-												onClick={() => setBuyingOpen((v) => !v)}
+												onClick={() => setMobileBuyingOpen((v) => !v)}
 											>
 												<span>{label}</span>
 												<svg
-													className={`ml-2 w-4 h-4 transition-transform ${buyingOpen ? "rotate-180" : ""}`}
+													className={`ml-2 w-4 h-4 transition-transform ${mobileBuyingOpen ? "rotate-180" : ""}`}
 													fill="none"
 													stroke="currentColor"
 													strokeWidth={2}
@@ -247,29 +394,20 @@ export default function Header({ onShowEventSection }: { onShowEventSection?: ()
 													/>
 												</svg>
 											</button>
-											{buyingOpen && (
+											{mobileBuyingOpen && (
 												<div className="mt-1 mb-2 ml-2 flex flex-col gap-1">
-													{buyingDropdownItems.map((item) => (
-														<div key={item.label} className="flex items-center py-2 px-2 rounded hover:bg-gray-100">
-															<span className="mr-2 flex items-center justify-center bg-[#B3C7E6] rounded w-[18px] h-[18px]" style={{ minWidth: 18, minHeight: 18 }}>
-																<img
-																	src={item.icon}
-																	alt="Logo"
-																	width={7}
-																	height={7}
-																	className="object-contain"
-																	style={{ width: 7, height: 7 }}
-																/>
-															</span>
-															{item.label === "Find a Franchise Opportunity" ? (
-																<Link href="/franchise-opportunity" className="text-xs text-blue-600 hover:underline">
-																	{item.label}
-																</Link>
-															) : (
-																<span className="text-xs">{item.label}</span>
-															)}
-														</div>
-													))}
+													<BuyAFranchiseLinks
+														items={buyingDropdownItems}
+														onFirstClick={(e, route) => {
+															e.stopPropagation();
+															setMenuOpen(false);
+															setMobileBuyingOpen(false);
+															if (route) router.push(route);
+														}}
+														spanClass="text-[15px] text-[#222] font-georgia"
+														iconBgClass="bg-[#B3C7E6]"
+														iconSize={14}
+													/>
 												</div>
 											)}
 										</>
@@ -386,3 +524,5 @@ export default function Header({ onShowEventSection }: { onShowEventSection?: ()
 		</header>
 	);
 }
+
+

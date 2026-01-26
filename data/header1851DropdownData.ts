@@ -1,15 +1,4 @@
-export type DropdownLink = {
-	label: string;
-	href: string;
-	icon: string; // image src for left icon
-	width?: number;
-	height?: number;
-};
-
-export type DropdownRightImage = {
-	src: string;
-	alt: string;
-};
+import type { DropdownLink, DropdownRightImage } from "../types/headerTypes";
 
 export const dropdownLinks: DropdownLink[] = [
 	{

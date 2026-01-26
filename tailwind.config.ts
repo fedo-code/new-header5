@@ -31,6 +31,7 @@ const config = {
 
          inter: ["var(--font-inter)", "system-ui", "sans-serif"],
          "roboto-condensed": ["var(--font-roboto-condensed)", "sans-serif"],
+         "host-grotesk": ["var(--font-host-grotesk)"],
       },
 
       

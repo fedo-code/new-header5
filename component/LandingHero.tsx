@@ -62,29 +62,29 @@ export default function LandingHero(): JSX.Element {
 						alt={GROUP1_LOGO.alt}
 						className={GROUP1_LOGO.className}
 					/>
-					<h2 className="text-[27px] font-extrabold mb-2 leading-tight text-[#0F3460]">
+					<h2 className="text-[27px] font-extrabold mb-2 leading-tight text-[#0F3460] font-passion-one">
 						{heroSections[1]?.mainTitle ?? ""}
 					</h2>
-					<p className="text-base text-[#102A43] mb-6 font-grostek">
-						{heroSections[1]?.mainDescription ?? ""}
+					<p className="mb-4 text-gray-700 font-host-grotesk">
+						{heroSections[1].mainDescription}
 					</p>
 					{/* Add 3 buttons below the description */}
 					<div className="flex flex-wrap gap-4 mt-2">
 						<button
 							type="button"
-							className="px-5 py-2 rounded bg-[#E5CAFA] text-[#183B56] font-semibold text-sm hover:bg-[#d1bdf7] transition"
+							className="px-5 py-2 rounded bg-[#E5CAFA] text-[#183B56] font-semibold text-sm hover:bg-[#d1bdf7] transition font-host-grotesk"
 						>
 							Get A Login
 						</button>
 						<button
 							type="button"
-							className="px-5 py-2 rounded bg-[#E5CAFA] text-[#183B56] font-semibold text-sm hover:bg-[#d1bdf7] transition"
+							className="px-5 py-2 rounded bg-[#E5CAFA] text-[#183B56] font-semibold text-sm hover:bg-[#d1bdf7] transition font-host-grotesk"
 						>
 							Schedule A Call
 						</button>
 						<button
 							type="button"
-							className="px-5 py-2 rounded bg-[#E5CAFA] text-[#183B56] font-semibold text-sm hover:bg-[#d1bdf7] transition"
+							className="px-5 py-2 rounded bg-[#E5CAFA] text-[#183B56] font-semibold text-sm hover:bg-[#d1bdf7] transition font-host-grotesk"
 						>
 							Login
 						</button>
@@ -92,7 +92,7 @@ export default function LandingHero(): JSX.Element {
 				</div>
 				<div className="flex flex-col items-center px-6">
 					<div className="w-full max-w-[640px] h-auto mt-[50px] mb-[15px] border border-black bg-[#f7f7f7] rounded p-4 flex flex-col px-2.5 sm:px-6 md:px-6 sm:mx-0 mx-2.5">
-						<h2 className="text-[2rem] font-extrabold mb-4 leading-tight text-[#0F3460]">
+						<h2 className="text-[#0F3460] text-[30px] font-extrabold mb-4 leading-tight font-passion-one">
 							{heroSections[1]?.sidebarTitle ?? ""}
 						</h2>
 						<form
@@ -158,28 +158,29 @@ export default function LandingHero(): JSX.Element {
 							className={FRANCHISE_LOGO.className}
 						/>
 					</div>
-					<h2 className="text-white text-[27px] font-extrabold mb-2 leading-tight">
+					<h2 className="text-white text-[27px] font-extrabold mb-2 leading-tight font-passion-one">
 						{/* Split mainTitle for colored part */}
 						{heroSections[2]?.mainTitle
 							? (
 								<>
-									An Easy-To-Use Database Designed to Help Franchises <br />
+									<span className="text-[#F6F5F1]">An Easy-To-Use Database Designed to Help Franchises</span>
+									<br />
 									<span className="text-[#E5CAFA]">Find the Right Supplier</span>
 								</>
 							)
 							: ""
 						}
 					</h2>
-					<p className="text-white text-base mb-6">
+					<p className="text-white text-base mb-6 font-host-grotesk">
 						{heroSections[2]?.mainDescription ?? ""}
 					</p>
-					<button className="px-6 py-2 rounded-lg bg-[#E6D6FB] text-[#102A43] font-bold text-base w-fit hover:bg-[#d1bdf7] transition">
+					<button className="px-6 py-2 rounded-lg bg-[#E6D6FB] text-[#102A43] font-bold text-base w-fit hover:bg-[#d1bdf7] transition font-host-grotesk">
 						{heroSections[2]?.button ?? ""}
 					</button>
 				</div>
 				<div className="flex flex-col items-center px-6">
 					<div className="w-full max-w-[640px] h-auto mt-[50px] mb-[15px] border border-white bg-[#183B56] rounded p-4 flex flex-col px-2.5 sm:px-6 md:px-6 sm:mx-0 mx-2.5">
-						<h2 className="text-white text-[30px] font-extrabold mb-4 leading-tight">
+						<h2 className="text-white text-[30px] font-extrabold mb-4 leading-tight font-passion-one">
 							{heroSections[2]?.sidebarTitle ?? ""}
 						</h2>
 						<form className="flex flex-col gap-4">
@@ -221,10 +222,6 @@ export default function LandingHero(): JSX.Element {
 	);
 }
 
-// Custom pixel values like md:w-[189px] are correct Tailwind JIT syntax.
-// Do NOT change to md:w-47.25; it is invalid.
-// ✅ Pure Tailwind CSS utility classes used (including arbitrary values like text-[#E5CAFA]).
-// ✅ Hardcoding these 3 buttons in JSX is correct for static UI.
-// ✅ Still follows strict TypeScript rules and best practices.
+
 
 

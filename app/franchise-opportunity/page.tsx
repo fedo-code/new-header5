@@ -1,5 +1,5 @@
 import FranchiseOpportunity from "../../component/FranchiseOpportunity";
 
-export default function FranchiseOpportunityPage() {
+export default function Page() {
 	return <FranchiseOpportunity />;
 }

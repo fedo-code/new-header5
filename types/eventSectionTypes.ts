@@ -3,7 +3,5 @@ export type EventSectionData = {
 	bgAlt: string;
 	title: string;
 	subtitle: string;
-	width: number;
-	height: number;
 	buttonLabel?: string;
 };

@@ -28,7 +28,7 @@ export default function FranchisePowerRankings() {
 									className="flex flex-col items-start"
 									style={{ width: card.contentWidth }}
 								>
-									<span className="text-xs font-bold text-pink-600 mb-2 tracking-wide w-fit">
+									<span className="text-xs font-bold text-pink-600 mb-2 tracking-wide w-fit font-roboto-condensed">
 										{card.label}
 									</span>
 									<div className="w-full aspect-[16/9] mb-4">
@@ -39,7 +39,7 @@ export default function FranchisePowerRankings() {
 											loading="lazy"
 										/>
 									</div>
-									<h3 className="text-base font-bold text-gray-900 mb-2.5 text-left w-full">
+									<h3 className="text-base font-bold text-gray-900 mb-2.5 text-left w-full font-roboto-condensed">
 										{card.title}
 									</h3>
 								</div>
@@ -49,7 +49,7 @@ export default function FranchisePowerRankings() {
 				</div>
 				{/* Right sidebar (20%) */}
 				<div className="flex flex-col h-full min-h-full">
-					<h2 className={sidebarIcons.sidebarHeadingClass}>
+					<h2 className={`${sidebarIcons.sidebarHeadingClass} font-roboto-condensed`}>
 						{sidebarHeading}
 					</h2>
 					<div
@@ -67,7 +67,9 @@ export default function FranchisePowerRankings() {
 								{hottestFranchisesSection.icon && (
 									<span className="text-pink-500 text-lg hidden">{hottestFranchisesSection.icon}</span>
 								)}
-								<h3 className={sidebarIcons.hottestTitleClass}>{hottestFranchisesSection.title}</h3>
+								<h3 className={`${sidebarIcons.hottestTitleClass} font-roboto-condensed`}>
+									{hottestFranchisesSection.title}
+								</h3>
 							</div>
 							{/* Hottest Franchises List */}
 							<div className={sidebarIcons.listClass}>
@@ -76,7 +78,7 @@ export default function FranchisePowerRankings() {
 										<span className={sidebarIcons.rankClass}>#{item.rank}</span>
 										<div className={sidebarIcons.logoPlaceholderClass}></div>
 										<div className="leading-tight">
-											<p className={sidebarIcons.brandClass}>{item.brand}</p>
+											<p className={`${sidebarIcons.brandClass} font-roboto-condensed`}>{item.brand}</p>
 											<span className={sidebarIcons.newsroomClass}>Visit Newsroom ›</span>
 										</div>
 									</div>
@@ -113,7 +115,7 @@ export default function FranchisePowerRankings() {
 									className={sidebarIcons.growthClubImgClass}
 									style={{ height: "24px", width: "64px" }}
 								/>
-								<h3 className={sidebarIcons.growthTitleClass}>{growthClubSection.title}</h3>
+								<h3 className={`${sidebarIcons.growthTitleClass} font-roboto-condensed`}>{growthClubSection.title}</h3>
 							</div>
 							{/* Top 5 Growth Club Brands List */}
 							<div className={sidebarIcons.growthListClass}>
@@ -122,7 +124,7 @@ export default function FranchisePowerRankings() {
 										<span className={sidebarIcons.rankClass}>#{item.rank}</span>
 										<div className={sidebarIcons.logoPlaceholderClass}></div>
 										<div className="leading-tight">
-											<p className={sidebarIcons.brandClass}>{item.brand}</p>
+											<p className={`${sidebarIcons.brandClass} font-roboto-condensed`}>{item.brand}</p>
 											<span className={sidebarIcons.newsroomClass}>Visit Newsroom ›</span>
 										</div>
 									</div>

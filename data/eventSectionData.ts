@@ -6,7 +6,5 @@ export const eventSectionData: EventSectionData = {
 	title: "1851 Events Title Lorem Ipsum Contes dor etst sintan",
 	subtitle:
 		"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
-	width: 1440,
-	height: 673,
 	buttonLabel: "Register Now",
 };

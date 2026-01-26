@@ -131,6 +131,7 @@ export const sidebarHeading: string = "Franchise Power Rankings";
 
 export const hottestFranchisesSection: SidebarSection = {
 	title: "Hottest Franchises",
+	
 	icon: "🔥",
 	items: Array.from({ length: 10 }).map((_, i) => ({
 		rank: i + 1,

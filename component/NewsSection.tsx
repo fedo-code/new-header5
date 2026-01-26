@@ -23,6 +23,8 @@ function getTitleClasses(layout?: LayoutType): string {
 		if (layout.fontFamily.includes("Georgia")) fontFamilyClass = "font-serif";
 		else if (layout.fontFamily.includes("Helvetica")) fontFamilyClass = "font-helvetica";
 	}
+	// Always add roboto condensed for news card titles
+	fontFamilyClass += " font-roboto-condensed";
 	const fontSizeClass = layout?.fontSize ? `text-[${layout.fontSize / 16}rem]` : "text-xl";
 	const fontWeightClass =
 		layout?.fontWeight === 700 ? "font-bold" :
@@ -48,7 +50,7 @@ function getDescriptionClasses(layout?: LayoutType): string {
 	const fontWeightClass = layout?.fontWeight === 400 ? "font-normal" : "";
 	const lineHeightClass = layout?.lineHeight === "140%" ? "leading-relaxed" : "";
 	const colorClass = layout?.color ? "" : "text-gray-700";
-	const fontFamilyClass = "font-serif";
+	const fontFamilyClass = "font-georgia";
 	const letterSpacingClass = layout?.letterSpacing === "0%" ? "tracking-normal" : "";
 	return `mb-3 ${fontSizeClass} ${fontWeightClass} ${lineHeightClass} ${colorClass} ${fontFamilyClass} ${letterSpacingClass}`;
 }
@@ -56,7 +58,7 @@ function getDescriptionClasses(layout?: LayoutType): string {
 export default function NewsSection() {
 	return (
 		<section className="container mx-auto px-12">
-			<h2 className="text-2xl font-bold text-slate-800 mb-4">{newsSectionHeading}</h2>
+			<h2 className="text-2xl font-bold text-slate-800 mb-4 font-roboto-condensed">{newsSectionHeading}</h2>
 			<div className="flex space-x-6 border-b mb-6 overflow-x-auto">
 				{newsTabs.map((tab) => (
 					<button

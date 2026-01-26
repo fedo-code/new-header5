@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Header from "./Header";
-import Footer from "./Footer";
+
 import { industryOptions, investmentRangePlaceholders, filterLabels } from "../data/filterOptionsData";
 import { franchiseTableRows } from "../data/franchiseTableRows";
 import { franchiseFilters } from "../data/franchiseFilters";
@@ -86,87 +85,17 @@ export default function FranchiseOpportunity() {
 
 	return (
 		<>
-			<Header />
+			
 			<main className="max-w-screen-xl mx-auto px-4 py-6">
-				<h1 className="text-2xl md:text-3xl font-bold mb-2">{franchisePageTexts.heading}</h1>
-				<p className="mb-6 text-gray-700">
+				<h1 className="text-2xl md:text-3xl font-bold mb-2 font-roboto-condensed">
+					{franchisePageTexts.heading}
+				</h1>
+				<p className="mb-6 text-gray-700 font-georgia">
 					{franchisePageTexts.description}
 				</p>
-				{/* Filter Section */}
-				<div className="bg-white rounded shadow p-4 mb-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:gap-6">
-					<div className="flex-1 flex flex-col gap-2">
-						<label htmlFor="search" className="text-xs font-semibold text-gray-600">{filterLabels.search}</label>
-						<input
-							id="search"
-							type="text"
-							placeholder={filterLabels.searchPlaceholder}
-							value={search}
-							onChange={e => setSearch(e.target.value)}
-							className="border border-gray-300 rounded px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-blue-200"
-						/>
-					</div>
-					<div className="flex-1 flex flex-col gap-2">
-						<label htmlFor="industry" className="text-xs font-semibold text-gray-600">{filterLabels.industry}</label>
-						<select
-							id="industry"
-							value={selectedIndustry}
-							onChange={e => setSelectedIndustry(e.target.value)}
-							className="border border-gray-300 rounded px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-blue-200"
-						>
-							<option value="">All</option>
-							{industryOptions.map(option => (
-								<option key={option} value={option}>{option}</option>
-							))}
-						</select>
-					</div>
-					<div className="flex flex-col gap-0 lg:flex-row lg:items-end lg:gap-2">
-						<div className="flex flex-col gap-2">
-							<label htmlFor="investment-min" className="text-xs font-semibold text-gray-600">{filterLabels.investmentRange}</label>
-							<input
-								id="investment-min"
-								type="text"
-								placeholder={investmentRangePlaceholders.min}
-								value={formatCurrency(investmentMin)}
-								onChange={handleInvestmentMinChange}
-								className="border border-gray-300 rounded px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-blue-200 w-full lg:w-28"
-								inputMode="numeric"
-							/>
-						</div>
-						<div className="flex items-center justify-center h-full py-2 lg:py-0">
-							<span className="text-xs text-gray-500 font-semibold px-2">{franchisePageTexts.toText}</span>
-						</div>
-						<div className="flex flex-col gap-2">
-							<input
-								id="investment-max"
-								type="text"
-								placeholder={investmentRangePlaceholders.max}
-								value={formatCurrency(investmentMax)}
-								onChange={handleInvestmentMaxChange}
-								className="border border-gray-300 rounded px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-blue-200 w-full lg:w-28"
-								inputMode="numeric"
-							/>
-						</div>
-					</div>
-					<div className="flex gap-2 mt-2 lg:mt-0">
-						<button
-							type="button"
-							className="bg-fuchsia-600 text-white px-4 py-2 rounded text-xs font-semibold hover:bg-fuchsia-700 transition"
-							onClick={handleApplyFilters}
-						>
-							{filterLabels.apply}
-						</button>
-						<button
-							type="button"
-							className="bg-gray-100 text-gray-700 px-4 py-2 rounded text-xs font-semibold hover:bg-gray-200 transition"
-							onClick={handleClearFilters}
-						>
-							{filterLabels.clear}
-						</button>
-					</div>
-				</div>
 				{/* Franchise count and filter chips section */}
 				<div className="mb-4">
-					<span className="block text-base font-semibold text-gray-900 mb-2">
+					<span className="block text-base font-semibold text-gray-900 mb-2 font-georgia">
 						{filteredRows.length} {filteredRows.length === 1 ? "Franchise" : "Franchises"}
 					</span>
 					<div className="flex items-center flex-wrap gap-2">
@@ -187,17 +116,89 @@ export default function FranchiseOpportunity() {
 						)}
 					</div>
 				</div>
+				{/* Filter Section */}
+				<div className="bg-white rounded shadow p-4 mb-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:gap-6">
+					<div className="flex-1 flex flex-col gap-2">
+						<label htmlFor="search" className="text-xs font-semibold text-gray-600 font-georgia">{filterLabels.search}</label>
+						<input
+							id="search"
+							type="text"
+							placeholder={filterLabels.searchPlaceholder}
+							value={search}
+							onChange={e => setSearch(e.target.value)}
+							className="border border-gray-300 rounded px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-blue-200"
+						/>
+					</div>
+					<div className="flex-1 flex flex-col gap-2">
+						<label htmlFor="industry" className="text-xs font-semibold text-gray-600 font-georgia">{filterLabels.industry}</label>
+						<select
+							id="industry"
+							value={selectedIndustry}
+							onChange={e => setSelectedIndustry(e.target.value)}
+							className="border border-gray-300 rounded px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-blue-200"
+						>
+							<option value="">All</option>
+							{industryOptions.map(option => (
+								<option key={option} value={option}>{option}</option>
+							))}
+						</select>
+					</div>
+					<div className="flex flex-col gap-0 lg:flex-row lg:items-end lg:gap-2">
+						<div className="flex flex-col gap-2">
+							<label htmlFor="investment-min" className="text-xs font-semibold text-gray-600 font-georgia">{filterLabels.investmentRange}</label>
+							<input
+								id="investment-min"
+								type="text"
+								placeholder={investmentRangePlaceholders.min}
+								value={formatCurrency(investmentMin)}
+								onChange={handleInvestmentMinChange}
+								className="border border-gray-300 rounded px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-blue-200 w-full lg:w-28"
+								inputMode="numeric"
+							/>
+						</div>
+						<div className="flex items-center justify-center h-full py-2 lg:py-0">
+							<span className="text-xs text-gray-500 font-semibold px-2 font-georgia">{franchisePageTexts.toText}</span>
+						</div>
+						<div className="flex flex-col gap-2">
+							<input
+								id="investment-max"
+								type="text"
+								placeholder={investmentRangePlaceholders.max}
+								value={formatCurrency(investmentMax)}
+								onChange={handleInvestmentMaxChange}
+								className="border border-gray-300 rounded px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-blue-200 w-full lg:w-28"
+								inputMode="numeric"
+							/>
+						</div>
+					</div>
+					<div className="flex gap-2 mt-2 lg:mt-0">
+						<button
+							type="button"
+							className="bg-fuchsia-600 text-white px-4 py-2 rounded text-xs font-semibold hover:bg-fuchsia-700 transition font-roboto-condensed"
+							onClick={handleApplyFilters}
+						>
+							{filterLabels.apply}
+						</button>
+						<button
+							type="button"
+							className="bg-gray-100 text-gray-700 px-4 py-2 rounded text-xs font-semibold hover:bg-gray-200 transition font-roboto-condensed"
+							onClick={handleClearFilters}
+						>
+							{filterLabels.clear}
+						</button>
+					</div>
+				</div>
 				{/* Franchise Table Section */}
 				<div className="bg-white rounded shadow mb-6">
 					<table className="min-w-full">
 						<thead className="bg-white">
 							<tr>
-								<th className="px-2 py-2 text-left text-xs font-semibold text-gray-600">{franchisePageTexts.tableHeaders.brand}</th>
-								<th className="px-2 py-2 text-left text-xs font-semibold text-gray-600">{franchisePageTexts.tableHeaders.category}</th>
-								<th className="px-2 py-2 text-left text-xs font-semibold text-gray-600 hidden md:table-cell">{franchisePageTexts.tableHeaders.units}</th>
-								<th className="px-2 py-2 text-left text-xs font-semibold text-gray-600">{franchisePageTexts.tableHeaders.investmentRange}</th>
-								<th className="px-2 py-2 text-left text-xs font-semibold text-gray-600 hidden md:table-cell">{franchisePageTexts.tableHeaders.cashRequired}</th>
-								<th className="px-2 py-2 text-left text-xs font-semibold text-gray-600 hidden md:table-cell">{franchisePageTexts.tableHeaders.latestStory}</th>
+								<th className="px-2 py-2 text-left text-xs font-semibold text-gray-600 font-georgia">{franchisePageTexts.tableHeaders.brand}</th>
+								<th className="px-2 py-2 text-left text-xs font-semibold text-gray-600 font-georgia">{franchisePageTexts.tableHeaders.category}</th>
+								<th className="px-2 py-2 text-left text-xs font-semibold text-gray-600 hidden md:table-cell font-georgia">{franchisePageTexts.tableHeaders.units}</th>
+								<th className="px-2 py-2 text-left text-xs font-semibold text-gray-600 font-georgia">{franchisePageTexts.tableHeaders.investmentRange}</th>
+								<th className="px-2 py-2 text-left text-xs font-semibold text-gray-600 hidden md:table-cell font-georgia">{franchisePageTexts.tableHeaders.cashRequired}</th>
+								<th className="px-2 py-2 text-left text-xs font-semibold text-gray-600 hidden md:table-cell font-georgia">{franchisePageTexts.tableHeaders.latestStory}</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -241,9 +242,9 @@ export default function FranchiseOpportunity() {
 					)}
 				</div>
 			</main>
-			<Footer />
+			
 		</>
 	);
 }
 
-// No inline styles are used in this file. All styling is handled via Tailwind CSS classes.
+
